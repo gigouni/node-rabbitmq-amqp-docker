@@ -1,19 +1,19 @@
 "use strict";
 
 let amqp = require('amqp');
+let constants = require('./config');
 
 let connection = amqp.createConnection(
     {
-        host: 'localhost'
-        , port: 5672
-        , login: 'guest'
-        , password: 'guest'
-        , connectionTimeout: 10000
-        , authMechanism: 'AMQPLAIN'
-        , vhost: '/'
-        , noDelay: true
-        , ssl: { enabled : false
-    }
+        host:           constants.HOST,
+        port:           constants.PORT,
+        login:          constants.LOGIN,
+        password:       constants.PASSWORD,
+        connectionTimeout: constants.CONNECTION_TIMEOUT,
+        authMechanism:  constants.AUTH_MECHANISM,
+        vhost:          constants.V_HOST,
+        noDelay:        constants.NO_DELAY,
+        ssl:            constants.SSL
 });
 
 // add this for better debuging
@@ -23,9 +23,8 @@ connection.on('error', function(e) {
 
 // Wait for connection to become established.
 connection.on('ready', function () {
-    console.log("It's ready");
     // Use the default 'amq.topic' exchange
-    connection.queue('my-queue', function (q) {
+    connection.queue(constants.QUEUE_NAME, function (q) {
         // Catch all messages
         q.bind('#');
 
