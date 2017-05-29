@@ -35,6 +35,8 @@ even overriding __HOME__/__HOSTNAME__/__PATH__/__TERM__, or already defined by t
 with a Dockerfile ENV
 * -P: Publish all exposed ports to the host interfaces
 
+[Here the Docker run references](https://docs.docker.com/engine/reference/run/)
+
 1.1.3. Check if the instance of ActiveMQ server is running
 
 ```shell
