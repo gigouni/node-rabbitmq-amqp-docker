@@ -2,7 +2,7 @@
 
 This repository is used to assume the way ActiveMQ and Node.js could work 
 together, around some AMQP protocol.If it was able to work with JWT 
-(JSON Web Token)[https://jwt.io/], it would be better, of course. But later.
+[JSON Web Token](https://jwt.io/), it would be better, of course. But later.
 
 ## 1. Getting started
 ### 1.1. Get the project stack
@@ -37,13 +37,23 @@ with a Dockerfile ENV
 
 [Here the Docker run references](https://docs.docker.com/engine/reference/run/)
 
+[Here is the source of this quickstart](https://hub.docker.com/r/webcenter/activemq/#quick-start)
+
 1.1.3. Check if the instance of ActiveMQ server is running
 
 ```shell
 $ /path/to/activemq/bin/activemq status
 ```
 
-## Languages
+Without any authentication service, you should see this in your output
 
-* [_'AMQP'_ npm's module](https://www.npmjs.com/package/amqp)
+```shell
+CRIT Server 'unix_http_server' running without any HTTP authentication checking
+```
 
+## TODO list
+
+* Handle the ECONNREFUSED issue
+* Try to create receivers
+* Try to create a queue
+* Improve the stack with a better architecture and documentation (maybe)
