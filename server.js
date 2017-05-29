@@ -1,7 +1,7 @@
 "use strict";
 
 let amqp = require('amqp');
-let constants = require('./config');
+let constants = require('./constants');
 
 let connection = amqp.createConnection(
     {
@@ -16,20 +16,20 @@ let connection = amqp.createConnection(
         ssl:            constants.SSL
 });
 
-// add this for better debuging
-connection.on('error', function(e) {
+// add this for better debugging
+connection.on('error', e => {
     console.log("Error from amqp: ", e);
 });
 
 // Wait for connection to become established.
-connection.on('ready', function () {
+connection.on('ready', () => {
     // Use the default 'amq.topic' exchange
-    connection.queue(constants.QUEUE_NAME, function (q) {
+    connection.queue(constants.QUEUE_NAME, q => {
         // Catch all messages
         q.bind('#');
 
         // Receive messages
-        q.subscribe(function (message) {
+        q.subscribe( message => {
             // Print messages to stdout
             console.log(message);
         });
