@@ -17,13 +17,13 @@ const AMQP = require('amqplib/callback_api');
 // then connect to RabbitMQ server
 AMQP.connect(CONSTANTS.CONNECT_TO, (err, conn) => {
 
+    // Clean exit
     if(err){
         console.log("Err detected: " + err);
         process.exit(0);
     }
 
     console.log("Connected successfully!");
-    console.log("Conn: " + conn);
 
     // Next we create a channel, which is where most of the API for getting things done resides:
     conn.createChannel((err, channel) => {
@@ -31,7 +31,7 @@ AMQP.connect(CONSTANTS.CONNECT_TO, (err, conn) => {
 
         channel.assertQueue(CONSTANTS.QUEUE_NAME, {durable: false});
         channel.sendToQueue(CONSTANTS.QUEUE_NAME, new Buffer(msg));
-        console.log("Queue %s sent %s", CONSTANTS.QUEUE_NAME, msg);
+        console.log("Sent %s", msg);
     });
 
     setTimeout(() => { conn.close(); process.exit(0); }, 500);

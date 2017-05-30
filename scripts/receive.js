@@ -1,6 +1,6 @@
 "use strict";
 /**
- * Message receiver - Receiver.
+ * Message consumer - Receiver.
  *
  * @author Nicolas GIGOU <nicolas.gigou [at] gmail.com>
  * @date 30/05/2017
@@ -18,7 +18,7 @@ AMQP.connect(CONSTANTS.CONNECT_TO, (err, conn) => {
 
         ch.assertQueue(CONSTANTS.QUEUE_NAME, { durable: false });
         console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", CONSTANTS.QUEUE_NAME);
-        ch.consume(CONSTANTS.QUEUE_NAME, function(msg) {
+        ch.consume(CONSTANTS.QUEUE_NAME, (msg) => {
             console.log(" [x] Received %s", msg.content.toString());
         }, {noAck: true});
     });

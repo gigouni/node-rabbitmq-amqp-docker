@@ -12,7 +12,7 @@ Open your terminal and clone the project stack from Github
 $ git clone https://github.com/gigouni/node-amqp
 ```
 
-In another terminal, get a RabbitMQ instance running (and check status)
+Get a RabbitMQ instance running (and check status)
 
 ```shell
 $ rabbitmq-server start
