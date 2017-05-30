@@ -16,7 +16,7 @@ console.log("\nConstants: " + JSON.stringify(CONSTANTS, null, 4) + "\n");
 const AMQP = require('amqplib/callback_api');
 
 // Then connect to RabbitMQ server
-AMQP.connect(CONSTANTS.CONNECT_TO, (err, conn) => {
+AMQP.connect(CONSTANTS.CONNECT_TO, (err, connection) => {
 
     // Clean exit
     if(err){
@@ -26,15 +26,19 @@ AMQP.connect(CONSTANTS.CONNECT_TO, (err, conn) => {
 
     console.log("Connected successfully!");
 
-    conn.createChannel((err, channel) => {
+    connection.createChannel((err, channel) => {
         let msg = process.argv.slice(2).join(' ') || "Hello World!";
 
-        channel.assertQueue(CONSTANTS.TASK_QUEUE_NAME, { durable: true });
-        channel.sendToQueue(CONSTANTS.TASK_QUEUE_NAME, new Buffer(msg), { persistent: true });
+        // The durable and persistent parameter to true mean that even if RabbitMQ server crash, the messages
+        // won't be lost, they will be persistent
+        // The name of the queue needs to be the same in the publisher and in the consumer to be sure that the
+        // publisher feeds the correct queue
+        channel.assertQueue(CONSTANTS.DURABLE_QUEUE_NAME, { durable: true });
+        channel.sendToQueue(CONSTANTS.DURABLE_QUEUE_NAME, new Buffer(msg), { persistent: true });
 
         console.log(" [x] Sent '%s'", msg);
     });
 
     // If we're not able to connect to the RabbitMQ server, clean exit
-    setTimeout(() => { conn.close(); process.exit(0); }, 1000);
+    setTimeout(() => { connection.close(); process.exit(0); }, 1000);
 });
