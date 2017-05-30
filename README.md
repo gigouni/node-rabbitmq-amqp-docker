@@ -12,26 +12,18 @@ Open your terminal and clone the project stack from Github
 $ git clone https://github.com/gigouni/node-amqp
 ```
 
-Get an RabbitMQ docker instance running
+In another terminal, get a RabbitMQ instance running (and check status)
 
 ```shell
-$ docker run --name='rabbitmq-node' -it --rm -e -P rabbitmq:latest
+$ rabbitmq-server start
+$ rabbitmqctl status
 ```
 
-_Nota Bene:_
-
-* -i: Keep STDIN open even if not attached
-* -t: Allocate a pseudo-tty
-* -rm: automatically clean up the container and remove the file system when the container exits
-* -e: Set any environment variable in the container, 
-even overriding __HOME__/__HOSTNAME__/__PATH__/__TERM__, or already defined by the developer 
-with a Dockerfile ENV
-* -P: Publish all exposed ports to the host interfaces
-
-Check if the instance of RabbitMQ server is running
+Run the scripts to send and receive the message through the queue
 
 ```shell
-$ /path/to/rabbitmq/bin/rabbitmq status
+$ node scripts/send.js
+$ node scripts/receive.js
 ```
 
 ## TODO list
