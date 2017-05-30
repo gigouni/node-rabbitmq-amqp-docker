@@ -18,6 +18,10 @@ AMQP.connect(CONSTANTS.CONNECT_TO, (err, conn) => {
 
         // We render the queue as a durable one, to persist the messages in case of crash
         channel.assertQueue(CONSTANTS.DURABLE_QUEUE_NAME, { durable: true });
+
+        // This tells RabbitMQ not to give more than one message to a worker at a time
+        // It doesn't dispatch a new message to a worker until it has processed and acknowledged the previous one
+        channel.prefetch(1);
         console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", CONSTANTS.DURABLE_QUEUE_NAME);
 
         // Let's fake it by just pretending we're busy - by using the setTimeout method.
