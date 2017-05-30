@@ -1,20 +1,22 @@
 {
-  "name": "node-amqp",
+  "name": "rabbitmq-node-amqp",
   "version": "0.0.1",
-  "description": "A test using AMQP protocol with Node as a client",
-  "main": "web-server.js",
+  "description": "A test using RabbitMQ as a message broker with AMQP (Advanced Message Queuing Protocol) and Node.js as a client",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "AMQP",
-    "Node",
-    "queuing"
+    "Node.js",
+    "javascript",
+    "queuing",
+    "RabbitMQ"
   ],
   "author": "Nicolas GIGOU",
   "license": "ISC",
   "dependencies": {
-    "amqp": "^0.2.6",
-    "amqp10": "^3.5.3"
+    "amqplib": "^0.5.1"
   }
 }

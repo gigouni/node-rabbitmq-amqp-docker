@@ -6,4 +6,5 @@ MAINTAINER Nicolas GIGOU
 
 RUN echo "I still not know what to put here"
 
-CMD ["/usr/bin/node", "/var/www/app.js"]
+CMD ["/usr/bin/node", "/var/www/send.js"]
+CMD ["/usr/bin/node", "/var/www/receive.js"]
