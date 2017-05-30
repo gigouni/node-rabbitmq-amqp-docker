@@ -4,7 +4,7 @@ This repository is used to assume the way RabbitMQ and Node.js could work
 together, around some AMQP protocol.If it was able to work with JWT 
 [JSON Web Token](https://jwt.io/), it would be better, of course. But later.
 
-## 1. Getting started
+##  Getting started
 
 Open your terminal and clone the project stack from Github
 
@@ -24,6 +24,11 @@ Run the scripts to send and receive the message through the queue
 ```shell
 $ node scripts/send.js
 $ node scripts/receive.js
+
+ou
+
+$ node scripts/new_task.js
+$ node scripts/worker.js
 ```
 
 ## TODO list
