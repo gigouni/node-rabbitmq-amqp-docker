@@ -8,7 +8,7 @@
  */
 
 // Use constants to mutualise
-const CONSTANTS = require('./constants');
+const CONSTANTS = require('../utils/constants');
 console.log("\nConstants: " + JSON.stringify(CONSTANTS, null, 4) + "\n");
 
 const AMQP = require('amqplib/callback_api');

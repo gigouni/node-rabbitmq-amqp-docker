@@ -1,28 +1,21 @@
-# ActiveMQ + Node.js + JWT
+# RabbitMQ + Node.js + JWT
 
-This repository is used to assume the way ActiveMQ and Node.js could work 
+This repository is used to assume the way RabbitMQ and Node.js could work 
 together, around some AMQP protocol.If it was able to work with JWT 
 [JSON Web Token](https://jwt.io/), it would be better, of course. But later.
 
 ## 1. Getting started
-### 1.1. Get the project stack
 
-1.1.1. Open your terminal and clone it from Github
+Open your terminal and clone the project stack from Github
 
 ```shell
 $ git clone https://github.com/gigouni/node-amqp
 ```
 
-1.1.2. Get an ActiveMQ docker instance running
+Get an RabbitMQ docker instance running
 
 ```shell
-$ docker run -P webcenter/activemq:latest
-```
-
-or (for a more complete example)
-
-```shell
-$ docker run --name='activemq' -it --rm -e 'ACTIVEMQ_MIN_MEMORY=512' -e 'ACTIVEMQ_MAX_MEMORY=2048' -P webcenter/activemq:latest
+$ docker run --name='rabbitmq-node' -it --rm -e -P rabbitmq:latest
 ```
 
 _Nota Bene:_
@@ -35,25 +28,22 @@ even overriding __HOME__/__HOSTNAME__/__PATH__/__TERM__, or already defined by t
 with a Dockerfile ENV
 * -P: Publish all exposed ports to the host interfaces
 
-[Here the Docker run references](https://docs.docker.com/engine/reference/run/)
-
-[Here is the source of this quickstart](https://hub.docker.com/r/webcenter/activemq/#quick-start)
-
-1.1.3. Check if the instance of ActiveMQ server is running
+Check if the instance of RabbitMQ server is running
 
 ```shell
-$ /path/to/activemq/bin/activemq status
-```
-
-Without any authentication service, you should see this in your output
-
-```shell
-CRIT Server 'unix_http_server' running without any HTTP authentication checking
+$ /path/to/rabbitmq/bin/rabbitmq status
 ```
 
 ## TODO list
 
 * Handle the ECONNREFUSED issue
-* Try to create receivers
+* Try to create senders (publishers)
+* Try to create receivers (consumers)
 * Try to create a queue
+* Implement the JWT authentication
 * Improve the stack with a better architecture and documentation (maybe)
+
+## References
+
+* [Docker run references](https://docs.docker.com/engine/reference/run/)
+* [Source of this Docker image](https://hub.docker.com/r/rabbitmq/)
