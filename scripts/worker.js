@@ -4,7 +4,7 @@
  *
  * @author Nicolas GIGOU <nicolas.gigou [at] gmail.com>
  * @date 30/05/2017
- * @see https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html
+ * @see https://www.rabbitmq.com/tutorials/tutorial-two-javascript.html
  */
 
 // Use constants to mutualise
@@ -27,8 +27,9 @@ AMQP.connect(CONSTANTS.CONNECT_TO, (err, conn) => {
             console.log(" [x] Received %s", msg.content.toString());
             setTimeout(function() {
                 console.log(" [x] Done");
+                channel.ack(msg);
             }, secs * 1000);
-        }, { noAck: true });
+        }, { noAck: false });
 
     });
 });
