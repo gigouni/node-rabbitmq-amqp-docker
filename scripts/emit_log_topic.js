@@ -14,7 +14,7 @@
  *
  * @author Nicolas GIGOU <nicolas.gigou [at] gmail.com>
  * @date 30/05/2017
- * @see https://www.rabbitmq.com/tutorials/tutorial-four-javascript.html
+ * @see https://www.rabbitmq.com/tutorials/tutorial-five-javascript.html
  */
 
 // Use constants to mutualise

@@ -41,7 +41,7 @@ $ node scripts/worker.js
 * ~~Try to create a queue~~
 * ~~Finish the part three of the tutorial (Publish/Subscribe)~~
 * ~~Finish the part four of the tutorial (Routing)~~
-* Finish the part five of the tutorial (Topics)
+* ~~Finish the part five of the tutorial (Topics)~~
 * Finish the part six of the tutorial (RPC)
 * Implement an example of JWT authentication
 * Improve the stack with a better architecture and documentation (maybe)
