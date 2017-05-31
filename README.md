@@ -33,11 +33,17 @@ $ node scripts/worker.js
 
 ## TODO list
 
-* Handle the ECONNREFUSED issue
-* Try to create senders (publishers)
-* Try to create receivers (consumers)
-* Try to create a queue
-* Implement the JWT authentication
+* ~~Handle the ECONNREFUSED issue~~
+* ~~Finish the part one of the tutorial ("Hello World!")~~
+* ~~Finish the part two of the tutorial (Work queues)~~
+* ~~Try to create senders (publishers)~~
+* ~~Try to create receivers (consumers)~~
+* ~~Try to create a queue~~
+* ~~Finish the part three of the tutorial (Publish/Subscribe)~~
+* Finish the part four of the tutorial (Routing)
+* Finish the part five of the tutorial (Topics)
+* Finish the part six of the tutorial (RPC)
+* Implement an example of JWT authentication
 * Improve the stack with a better architecture and documentation (maybe)
 
 ## References
