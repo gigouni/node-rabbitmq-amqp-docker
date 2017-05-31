@@ -25,27 +25,27 @@ Run the scripts to send and receive the message through the queue
 $ node scripts/send.js
 $ node scripts/receive.js
 
-ou
+or
 
 $ node scripts/new_task.js
 $ node scripts/worker.js
 
-ou
+or
 
 $ node scripts/emit_log.js
 $ node scripts/receive_log.js
 
-ou
+or
 
 $ node scripts/emit_log_direct.js
 $ node scripts/receive_log_direct.js
 
-ou
+or
 
 $ node scripts/emit_log_topic.js
 $ node scripts/receive_log_topic.js
 
-ou
+or
 
 $ node scripts/rpc_server.js
 $ node scripts/rpc_client.js
