@@ -122,3 +122,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * [Docker run references](https://docs.docker.com/engine/reference/run/)
 * [Source of this Docker image](https://hub.docker.com/r/rabbitmq/)
 * [RabbitMQ tutorial](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
+* [JWT.io](https://jwt.io/)
