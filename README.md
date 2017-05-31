@@ -40,7 +40,7 @@ $ node scripts/worker.js
 * ~~Try to create receivers (consumers)~~
 * ~~Try to create a queue~~
 * ~~Finish the part three of the tutorial (Publish/Subscribe)~~
-* Finish the part four of the tutorial (Routing)
+* ~~Finish the part four of the tutorial (Routing)~~
 * Finish the part five of the tutorial (Topics)
 * Finish the part six of the tutorial (RPC)
 * Implement an example of JWT authentication
