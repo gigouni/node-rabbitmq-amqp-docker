@@ -70,3 +70,4 @@ $ node scripts/rpc_client.js
 
 * [Docker run references](https://docs.docker.com/engine/reference/run/)
 * [Source of this Docker image](https://hub.docker.com/r/rabbitmq/)
+* [RabbitMQ tutorial](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
