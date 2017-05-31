@@ -10,7 +10,7 @@
  * '#' joker is used ot replace zero or more words.
  *
  * Ex: Emit a log with a routing key "kern.critical" type
- * $ ./emit_log_topic.js "kern.critical" "A critical kernel error"
+ * $ node ./emit_log_topic.js "kern.critical" "A critical kernel error"
  *
  * @author Nicolas GIGOU <nicolas.gigou [at] gmail.com>
  * @date 30/05/2017

@@ -3,19 +3,19 @@
  * Logs consumer - Receiver.
  *
  * Ex: To save the logs in a file, run the following command:
- * $ ./receive_logs.js > logs_from_rabbit.log
+ * $ node ./receive_logs.js > logs_from_rabbit.log
  *
  * Ex: To receive all logs
- * $ ./receive_logs_topic.js "#"
+ * $ node ./receive_logs_topic.js "#"
  *
  * Ex: To receive all logs from the facility "kern"
- * $ ./receive_logs_topic.js "kern.*"
+ * $ node ./receive_logs_topic.js "kern.*"
  *
  * Ex: Hear only about "critical" logs
- * $ ./receive_logs_topic.js "*.critical"
+ * $ node ./receive_logs_topic.js "*.critical"
  *
  * Ex: Create multiple bindings
- * $ /receive_logs_topic.js "kern.*" "*.critical"
+ * $ node ./receive_logs_topic.js "kern.*" "*.critical"
  *
  * @author Nicolas GIGOU <nicolas.gigou [at] gmail.com>
  * @date 30/05/2017

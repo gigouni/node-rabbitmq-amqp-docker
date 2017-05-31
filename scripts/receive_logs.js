@@ -3,7 +3,7 @@
  * Logs consumer - Receiver.
  *
  * To save the logs in a file, run the following command:
- * $ ./receive_logs.js > logs_from_rabbit.log
+ * $ node ./receive_logs.js > logs_from_rabbit.log
  *
  * @author Nicolas GIGOU <nicolas.gigou [at] gmail.com>
  * @date 30/05/2017
