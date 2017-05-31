@@ -63,7 +63,8 @@ $ node scripts/rpc_client.js
 * ~~Finish the part four of the tutorial (Routing)~~
 * ~~Finish the part five of the tutorial (Topics)~~
 * ~~Finish the part six of the tutorial (RPC)~~
-* Implement an example of JWT authentication
+* Implement an example of JWT authentication Node.js side plus session ID
+* Implement an authentication service RabbitMQ side
 * Improve the stack with a better architecture and documentation (maybe)
 
 ## References
