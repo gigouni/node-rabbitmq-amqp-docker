@@ -19,39 +19,39 @@ $ rabbitmq-server start
 $ rabbitmqctl status
 ```
 
-Run the scripts to send and receive the message through the queue
+Run the scripts to send and receive the message through the queue (for params, check scripts themselves)
 
 ```shell
-$ node scripts/send.js
-$ node scripts/receive.js
+$ node examples/scripts/send.js
+$ node examples/scripts/receive.js
 
 or
 
-$ node scripts/new_task.js
-$ node scripts/worker.js
+$ node examples/scripts/new_task.js
+$ node examples/scripts/worker.js
 
 or
 
-$ node scripts/emit_log.js
-$ node scripts/receive_log.js
+$ node examples/scripts/emit_log.js
+$ node examples/scripts/receive_log.js
 
 or
 
-$ node scripts/emit_log_direct.js
-$ node scripts/receive_log_direct.js
+$ node examples/scripts/emit_log_direct.js
+$ node examples/scripts/receive_log_direct.js
 
 or
 
-$ node scripts/emit_log_topic.js
-$ node scripts/receive_log_topic.js
+$ node examples/scripts/emit_log_topic.js
+$ node examples/scripts/receive_log_topic.js
 
 or
 
-$ node scripts/rpc_server.js
-$ node scripts/rpc_client.js
+$ node examples/scripts/rpc_server.js
+$ node examples/scripts/rpc_client.js
 ```
 
-## TODO list
+## To do list
 
 * ~~Handle the ECONNREFUSED issue~~
 * ~~Finish the part one of the tutorial ("Hello World!")~~
@@ -66,6 +66,56 @@ $ node scripts/rpc_client.js
 * Implement an example of JWT authentication Node.js side plus session ID
 * Implement an authentication service RabbitMQ side
 * Improve the stack with a better architecture and documentation (maybe)
+
+## Running the tests
+
+_Not implemented yet_
+
+## Deployment
+
+Docker could be a part of the solution. _Could be_ .. Let's see it later
+
+## Built With
+
+* [Node.js](https://nodejs.org/en/) - The JS interpreter
+* [RabbitMQ](https://rabbitmq.com/) - The MOM (message broker)
+* [Express JWT](https://www.npmjs.com/package/express-jwt) - Used to secure the access to the back-end
+
+## Contributing
+
+No contributions necessary.
+
+## Versioning
+
+* v2 _In progress_
+    * Move the previous scripts to a examples/ folder
+    * Create an empty Node.js server with two routes (one to check if the server is running, the other one to check the JWT protection)
+    * Add _express-jwt_ module to use JWT access control
+    * Improve the README.md
+
+* v1
+    * Create an util to mutualise constants values
+    * Follow the six steps of the RabbitMQ tutorial
+    * Move the created scripts to a script/ folder
+    * Write a README.md and add comments to a better understanding of the scripts
+
+## Authors
+
+* **Nicolas GIGOU** - *Initial work* - [Gigouni](https://github.com/gigouni)
+
+_No other contributors_
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Implement a Node.js server
+* Follow ES6 conventions
+* Assume the role and the features of a MOM (_"Message-Oriented Middleware"_)
+* Bind a Node.js server with a MOM like RabbitMQ
+* Control access through JWT
 
 ## References
 
