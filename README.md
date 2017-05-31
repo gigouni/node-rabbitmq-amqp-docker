@@ -29,6 +29,26 @@ ou
 
 $ node scripts/new_task.js
 $ node scripts/worker.js
+
+ou
+
+$ node scripts/emit_log.js
+$ node scripts/receive_log.js
+
+ou
+
+$ node scripts/emit_log_direct.js
+$ node scripts/receive_log_direct.js
+
+ou
+
+$ node scripts/emit_log_topic.js
+$ node scripts/receive_log_topic.js
+
+ou
+
+$ node scripts/rpc_server.js
+$ node scripts/rpc_client.js
 ```
 
 ## TODO list
@@ -42,7 +62,7 @@ $ node scripts/worker.js
 * ~~Finish the part three of the tutorial (Publish/Subscribe)~~
 * ~~Finish the part four of the tutorial (Routing)~~
 * ~~Finish the part five of the tutorial (Topics)~~
-* Finish the part six of the tutorial (RPC)
+* ~~Finish the part six of the tutorial (RPC)~~
 * Implement an example of JWT authentication
 * Improve the stack with a better architecture and documentation (maybe)
 
