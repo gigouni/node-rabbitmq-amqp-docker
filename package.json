@@ -4,10 +4,13 @@
   "description": "A test using RabbitMQ as a message broker with AMQP (Advanced Message Queuing Protocol) and Node.js as a client",
   "main": "server.js",
   "scripts": {
-    "receive_sms":  "node scripts/receive_sms_server.js",
-    "receive_mail": "node scripts/receive_mail_server.js",
-    "send":         "node scripts/send_server.js",
-    "test":         "echo \"Error: no test specified\" && exit 1"
+    "receive_sms":                "node scripts/receive_sms_server.js",
+    "receive_mail":               "node scripts/receive_mail_server.js",
+    "send":                       "node scripts/send_server.js",
+    "build-docker-sender":        "sudo docker build -t gigouni/node-amqp-sender",
+    "build-docker-receiver-mail": "sudo docker build -t gigouni/node-amqp-receiver-mail",
+    "build-docker-receiver-sms":  "sudo docker build -t gigouni/node-amqp-receiver-sms",
+    "test":                       "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "AMQP",
