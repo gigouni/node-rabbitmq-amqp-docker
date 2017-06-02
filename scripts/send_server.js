@@ -7,33 +7,29 @@
  * @see https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html
  */
 
-// Utility functions
-const HELPER = require('../utils/helper');
-const H = new HELPER();
-
-// Use constants to mutualise
-const CONSTANTS = require('../utils/config');
+// Module to set up several modules at once time
+const SYS = require('../utils/system');
 const AMQP = require('amqplib/callback_api');
 
 // Check if the constants exists to avoid crash when connecting to the AMQP client
-if (!H.cioe(CONSTANTS)) { H.errHandler("while trying to read the constants. The config file might not be found", {}); }
+if (!SYS.H.cioe(SYS.CONSTANTS)) { SYS.H.errHandler("while trying to read the constants. The config file might not be found", {}); }
 
-AMQP.connect(CONSTANTS.CONNECT_TO, (err, connection) => {
+AMQP.connect(SYS.CONSTANTS.CONNECT_TO, (err, connection) => {
 
     // Clean exit
-    if(err) { H.errHandler("while trying to connect to the AMQP client", err); }
+    if(err) { SYS.H.errHandler("while trying to connect to the AMQP client", err); }
 
     connection.createChannel((err, channel) => {
 
         // Clean exit
-        if(err) { H.errHandler("while trying to create the channel", err); }
+        if(err) { SYS.H.errHandler("while trying to create the channel", err); }
 
         let target = 'sms';
         let msg = 'Test d\'envoi de message pour les SMS';
 
         // Use direct queue to be able to interpret the 2nd parameter of the channel.publish(...) function
-        channel.assertExchange(CONSTANTS.EXCHANGE_NAME, 'direct', { durable: false });
-        channel.publish(CONSTANTS.EXCHANGE_NAME, target, new Buffer(msg));
+        channel.assertExchange(SYS.CONSTANTS.EXCHANGE_NAME, 'direct', { durable: false });
+        channel.publish(SYS.CONSTANTS.EXCHANGE_NAME, target, new Buffer(msg));
         console.log(` [x] Sent ${target}: '${msg}'`);
     });
 

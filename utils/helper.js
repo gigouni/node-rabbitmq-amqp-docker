@@ -3,9 +3,21 @@
  * ---------------------------------------------------------------------------------------------------------
  * Helper Class.
  *
+ * @description A custom NodeJS module to optimize the development process by providing helper functions.
  * @since 0.0.1.
  * @author Nicolas GIGOU.
- * @description A custom NodeJS module to optimize the development process by providing helper functions.
+ *
+ * *-*-*-*-*-*-*
+ * How to use it
+ * *-*-*-*-*-*-*
+ *
+ * <code>
+ *      [...]
+ *      const HELPER = require('../utils/helper');
+ *      const H = new HELPER();
+ *      [...]
+ *      if (!H.cioe(CONSTANTS)) { ... }
+ * </code>
  * ---------------------------------------------------------------------------------------------------------
  */
 
