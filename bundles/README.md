@@ -50,3 +50,8 @@ REPOSITORY                                  TAG                 IMAGE ID        
 ```
 
 It means you've succeed. Congrats!
+
+## References
+
+* [Create a Dockerfile in your Node.js app project](https://hub.docker.com/_/node/)
+* [Dockerizing a Node.js web app](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
