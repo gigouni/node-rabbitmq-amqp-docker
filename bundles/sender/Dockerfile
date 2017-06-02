@@ -1,8 +1,8 @@
 #  -----------------------------------------
 # |              DOCKERFILE                 |
-# |            Nicolas GIGOU                |
+# |             Nicolas GIGOU               |
 # |                                         |
-# |          YOUR_PROJECT_NAME              |
+# |            sender_bundle                |
 #  -----------------------------------------
 
 # Prepared thanks to: https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
@@ -26,6 +26,7 @@ RUN npm install
 COPY . /usr/src/app
 
 # You'll use the EXPOSE instruction to have it mapped by the docker daemon
+# !!! WARNING !!!
 # Here for development only, you should just expose your real ports
 EXPOSE 1-10000
 

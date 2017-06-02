@@ -1,8 +1,8 @@
 #  -----------------------------------------
 # |              DOCKERFILE                 |
-# |            Nicolas GIGOU                |
+# |             Nicolas GIGOU               |
 # |                                         |
-# |          YOUR_PROJECT_NAME              |
+# |         receiver_mail_bundle            |
 #  -----------------------------------------
 
 # Prepared thanks to: https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
