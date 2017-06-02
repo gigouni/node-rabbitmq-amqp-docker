@@ -4,9 +4,10 @@
   "description": "A test using RabbitMQ as a message broker with AMQP (Advanced Message Queuing Protocol) and Node.js as a client",
   "main": "server.js",
   "scripts": {
-    "send": "node scripts/send.js",
-    "receive": "node scripts/receive.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "receive_sms":  "node scripts/receive_sms_server.js",
+    "receive_mail": "node scripts/receive_mail_server.js",
+    "send":         "node scripts/send_server.js",
+    "test":         "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "AMQP",
