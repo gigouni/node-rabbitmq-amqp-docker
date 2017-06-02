@@ -15,22 +15,18 @@
 
 // Module dependencies
 const WINSTON = require('winston');
-const HELPER = require('./helper');
-const H = new HELPER();
 
 function Logger() {
-    let current_time = H.getCurrentTime();
-    console.log(current_time);
     this.logger = new (WINSTON.Logger)({
         transports: [
             new (WINSTON.transports.File)({
                 name: 'info-file',
-                filename: 'logs/file-log-info-' + current_time + '.log',
+                filename: 'logs/file-log-info.log',
                 level: 'info'
             })
         ]
     });
-    console.log(`A new logger has been instantiated with the name logs/file-log-info-${current_time} .log'.`);
+    console.log(`A new logger has been instantiated with the name logs/file-log-info.log'.`);
 }
 
 Logger.prototype.log = (severity, message) => {

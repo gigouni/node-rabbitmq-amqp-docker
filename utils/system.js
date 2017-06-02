@@ -6,6 +6,13 @@
  * @since 0.0.1.
  * @author Nicolas GIGOU.
  *
+ * *-*-*-*
+ * Warning
+ * *-*-*-*
+ *
+ * Even if this code is called several times, Node.js won't instantiate several
+ * instance of the Helper or the Logger. They will be automatically cached and retrieve it when needed.
+ *
  * *-*-*-*-*-*-*
  * How to use it
  * *-*-*-*-*-*-*
