@@ -28,7 +28,7 @@ AMQP.connect(SYS.CONSTANTS.CONNECT_TO, (err, connection) => {
         let msg = 'Test d\'envoi de message pour les SMS';
 
         // Use direct queue to be able to interpret the 2nd parameter of the channel.publish(...) function
-        channel.assertExchange(SYS.CONSTANTS.EXCHANGE_NAME, 'direct', { durable: false });
+        channel.assertExchange(SYS.CONSTANTS.EXCHANGE_NAME, SYS.CONSTANTS.EXCHANGE_TYPE, { durable: false });
         channel.publish(SYS.CONSTANTS.EXCHANGE_NAME, target, new Buffer(msg));
         console.log(` [x] Sent ${target}: '${msg}'`);
     });

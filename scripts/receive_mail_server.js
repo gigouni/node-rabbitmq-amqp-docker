@@ -26,9 +26,15 @@ AMQP.connect(SYS.CONSTANTS.CONNECT_TO, (err, connection) => {
 
         // Check the existence of the direct exchange
         // If the rabbitMQ is killed, the exchange is lost (durable: false)
-        channel.assertExchange(SYS.CONSTANTS.EXCHANGE_NAME, 'direct', { durable: false });
+        channel.assertExchange(SYS.CONSTANTS.EXCHANGE_NAME, SYS.CONSTANTS.EXCHANGE_TYPE, { durable: false });
 
+        // Exclusive queues may only be accessed by the current connection
+        // They are deleted when that connection closes
         channel.assertQueue(SYS.CONSTANTS.MAIL_QUEUE_NAME, { exclusive: true }, (err, q) => {
+
+            // Clean exit
+            if(err) { SYS.H.errHandler(`while trying to assert the ${SYS.CONSTANTS.MAIL_QUEUE_NAME} queue`, err); }
+
             console.log(` [*] Waiting for MAIL on ${SYS.CONSTANTS.MAIL_QUEUE_NAME} queue. To exit press CTRL+C`);
 
             // Bind the queue with the exchange by being interested by messages with the 'mail' pattern
