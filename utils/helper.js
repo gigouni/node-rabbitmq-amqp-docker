@@ -24,7 +24,7 @@ function Helper() {}
  * @since 0.0.1.
  * @author Nicolas GIGOU.
  */
-Helper.prototype.getCurrentTime = function() {
+Helper.prototype.getCurrentTime = () => {
     let current_date = new Date();
     let hour = current_date.getHours();
     let minute = current_date.getMinutes();
@@ -36,6 +36,21 @@ Helper.prototype.getCurrentTime = function() {
     if (second < 10) { second = "0" + second; }
 
     return hour + ":" + minute + ":" + second;
+};
+
+/**
+ * @description Handles the err when catching some from the MOM.
+ * @param msg {string} The message to add to the error log.
+ * @param err {object} The object containing the error data.
+ * @since  0.0.1.
+ * @author Nicolas GIGOU.
+ */
+Helper.prototype.errHandler = (msg, err) => {
+    if(msg === "") {
+        msg = "caught by anonymous call";
+    }
+    console.log(`Err ${msg}: `, err);
+    process.exit(0);
 };
 
 module.exports = Helper;
