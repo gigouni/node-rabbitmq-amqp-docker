@@ -12,7 +12,7 @@
 /**
  * @constructor
  * @description Constructs a new Helper instance.
- * @returns {Helper} A small module to avoid long typings. Some kind of lazyness in action.
+ * @returns {Helper} A small module to avoid to use too long function name. Some kind of laziness in action.
  * @since 0.0.1.
  * @author Nicolas GIGOU.
  */

@@ -1,3 +1,24 @@
+/**
+ * --------------------------------------------------------------------------------------------------------------
+ * Constants.
+ *
+ * @since 0.0.1.
+ * @author Nicolas GIGOU.
+ * @description A config file to mutualise all the constants into a single file. Improve the maintainability.
+ *
+ * *-*-*-*-*-*-*
+ * How to use it
+ * *-*-*-*-*-*-*
+ *
+ * <code>
+ *      [...]
+ *      const CONSTANTS = require('../utils/config');
+ *      [...]
+ *      console.log(`My constant: ${CONSTANTS.CONNECT_TO}`);
+ * </code>
+ * --------------------------------------------------------------------------------------------------------------
+ */
+
 const _HOST                 = 'localhost';
 const _AMQP_PROTOCOL        = 'amqp://';
 const _CONNECT_TO           = _AMQP_PROTOCOL + _HOST;
