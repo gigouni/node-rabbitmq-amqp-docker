@@ -26,7 +26,8 @@ RUN npm install
 COPY . /usr/src/app
 
 # You'll use the EXPOSE instruction to have it mapped by the docker daemon
-# Here for development only, you should just expose your real ports
-EXPOSE 1-10000
+EXPOSE 5671-5672
 
+# Limit the number of processus for the container to avoid system overflow
+# CMD [ "ulimit", "-u", "1" ]
 CMD [ "npm", "start" ]

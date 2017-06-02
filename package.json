@@ -7,9 +7,9 @@
     "receive_sms":                "node scripts/receive_sms_server.js",
     "receive_mail":               "node scripts/receive_mail_server.js",
     "send":                       "node scripts/send_server.js",
-    "build-docker-sender":        "sudo docker build -t gigouni/node-amqp-sender",
-    "build-docker-receiver-mail": "sudo docker build -t gigouni/node-amqp-receiver-mail",
-    "build-docker-receiver-sms":  "sudo docker build -t gigouni/node-amqp-receiver-sms",
+    "build-docker-sender":        "cd bundles/sender && sudo docker build -t gigouni/node-amqp-sender",
+    "build-docker-receiver-mail": "cd bundles/receiver_mail && sudo docker build -t gigouni/node-amqp-receiver-mail",
+    "build-docker-receiver-sms":  "cd bundles/receiver_sms && sudo docker build -t gigouni/node-amqp-receiver-sms",
     "test":                       "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

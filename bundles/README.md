@@ -49,7 +49,31 @@ REPOSITORY                                  TAG                 IMAGE ID        
 <your-username>/node-amqp-sender          latest              3d995rcca48b        2 minutes ago        66.11 MB
 ```
 
-It means you've succeed. Congrats!
+It means you've succeed. Congrats! If you need to remove a single image, you can
+
+```shell
+$ sudo docker images
+$ sudo docker rmi -f <image-id>
+```
+
+## Running the images
+
+Let's run the receiver-sms image. Casually, we should have -p 49190:8080 (by example) but for 
+trying, let's go for -P (cf _Nota Bene_ below)
+
+```shell
+$ sudo docker run -P -d <your username>/node-amqp-receiver-sms
+```
+
+_Nota Bene:_
+
+* -d: Run the container in detached mode
+* -i: Keep STDIN open even if not attached
+* -t: Allocate a pseudo-tty
+* -rm: automatically clean up the container and remove the file system when the container exits
+* -e: Set any environment variable in the container, even overriding HOME/HOSTNAME/PATH/TERM, 
+    or already defined by the developer with a Dockerfile ENV
+* -P: Publish all exposed ports to the host interfaces
 
 ## References
 
