@@ -1,4 +1,4 @@
-# RabbitMQ + Node.js + JWT
+# Bundles and dockerisation
 
 Welcome in the _bundles_ folder. Here you will be able to find the bundles as they are 
 structured to be docker-ise. To run them, execute the following commands.

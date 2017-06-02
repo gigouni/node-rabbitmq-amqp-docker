@@ -1,4 +1,4 @@
-# RabbitMQ + Node.js + JWT
+# Examples - Learning/Understanding by doing
 
 Welcome in the _examples_ folder. Here you will be able to find several examples if RabbitMQ implementation.
 They are the result of the RabbitMQ tutorial that I invite you to read, 
