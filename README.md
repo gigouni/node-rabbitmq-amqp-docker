@@ -22,53 +22,17 @@ $ rabbitmqctl status
 Run the scripts to send and receive the message through the queue
 
 ```shell
-$ node scripts/send.js
-$ node scripts/receive.js
-
-or
-
-$ node scripts/new_task.js
-$ node scripts/worker.js
-
-or
-
-$ node scripts/emit_log.js
-$ node scripts/receive_log.js
-
-or
-
-$ node scripts/emit_log_direct.js
-$ node scripts/receive_log_direct.js
-
-or
-
-$ node scripts/emit_log_topic.js
-$ node scripts/receive_log_topic.js
-
-or
-
-$ node scripts/rpc_server.js
-$ node scripts/rpc_client.js
+$ node scripts/send_server.js
+$ node scripts/receive_sms_server.js
+$ node scripts/receive_mail_server.js
 ```
 
 ## TODO list
 
-* ~~Handle the ECONNREFUSED issue~~
-* ~~Finish the part one of the tutorial ("Hello World!")~~
-* ~~Finish the part two of the tutorial (Work queues)~~
-* ~~Try to create senders (publishers)~~
-* ~~Try to create receivers (consumers)~~
-* ~~Try to create a queue~~
-* ~~Finish the part three of the tutorial (Publish/Subscribe)~~
-* ~~Finish the part four of the tutorial (Routing)~~
-* ~~Finish the part five of the tutorial (Topics)~~
-* ~~Finish the part six of the tutorial (RPC)~~
 * Implement an example of JWT authentication Node.js side plus session ID
 * Implement an authentication service RabbitMQ side
 * Improve the stack with a better architecture and documentation (maybe)
 
 ## References
 
-* [Docker run references](https://docs.docker.com/engine/reference/run/)
-* [Source of this Docker image](https://hub.docker.com/r/rabbitmq/)
 * [RabbitMQ tutorial](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
