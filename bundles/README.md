@@ -26,6 +26,12 @@ Run the scripts to docker-ise the bundles
 $ cd node-amqp/bundles/sender && docker build -t <your-username>/node-amqp-sender .
 $ cd ../receiver_mail && docker build -t <your-username>/node-amqp-receiver-mail .
 $ cd ../receiver_sms && docker build -t <your-username>/node-amqp-receiver-sms .
+
+or, if you prefer easy stuff
+
+$ npm run build-docker-sender
+$ npm run build-docker-receiver-mail
+$ npm run build-docker-receiver-sms
 ```
 
 Check if the images are OK
