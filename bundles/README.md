@@ -43,10 +43,10 @@ $ sudo docker images
 If it's returning something like
 
 ```shell
-REPOSITORY                        TAG                 IMAGE ID            CREATED              SIZE
-<your-username>/node-amqp-receiver-sms    latest              bccb24ff3c0b        4 seconds ago        66.11 MB
-<your-username>/node-amqp-receiver-mail   latest              c2f1df0a932f        22 seconds ago       66.11 MB
-<your-username>/node-amqp-sender          latest              3d99f3cca48b        2 minutes ago        66.11 MB
+REPOSITORY                                  TAG                 IMAGE ID            CREATED              SIZE
+<your-username>/node-amqp-receiver-sms    latest              bctg24ff3c0b        4 seconds ago        66.11 MB
+<your-username>/node-amqp-receiver-mail   latest              c2f1re0a932f        22 seconds ago       66.11 MB
+<your-username>/node-amqp-sender          latest              3d995rcca48b        2 minutes ago        66.11 MB
 ```
 
 It means you've succeed. Congrats!
