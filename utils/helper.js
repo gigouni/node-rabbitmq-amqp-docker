@@ -39,6 +39,16 @@ Helper.prototype.getCurrentTime = () => {
 };
 
 /**
+ * @description Checks if the object exists by checking the number of elements inside it.
+ * @param obj {object} The object to check.
+ * @since  0.0.1.
+ * @author Nicolas GIGOU.
+ */
+Helper.prototype.cioe = (obj) => {
+    return (Object.keys(obj).length > 0);
+};
+
+/**
  * @description Handles the err when catching some from the MOM.
  * @param msg {string} The message to add to the error log.
  * @param err {object} The object containing the error data.

@@ -13,6 +13,9 @@ const H = new HELPER();
 const CONSTANTS = require('../utils/config');
 const AMQP = require('amqplib/callback_api');
 
+// Check if the constants exists to avoid crash when connecting to the AMQP client
+if (!H.cioe(CONSTANTS)) { H.errHandler("while trying to read the constants. The config file might not be found", {}); }
+
 AMQP.connect(CONSTANTS.CONNECT_TO, (err, connection) => {
 
     // Clean exit
@@ -43,7 +46,7 @@ AMQP.connect(CONSTANTS.CONNECT_TO, (err, connection) => {
 
             // Executed action when receiving messages from the queue
             channel.consume(q.queue, (msg) => {
-                console.log(" [x] %s: '%s'", msg.fields.routingKey, msg.content.toString());
+                console.log(` [x] ${msg.fields.routingKey}:${msg.content.toString()}`);
                 console.log("The message with be send to the tiers SMS broker right now");
             }, { noAck: false });
         });
@@ -56,7 +59,7 @@ AMQP.connect(CONSTANTS.CONNECT_TO, (err, connection) => {
 
             // Executed action when receiving messages from the queue
             channel.consume(q.queue, (msg) => {
-                console.log(" [x] %s: '%s'", msg.fields.routingKey, msg.content.toString());
+                console.log(` [x] ${msg.fields.routingKey}:${msg.content.toString()}`);
                 console.log("The message with be send to the tiers MAIL broker right now");
             }, { noAck: false });
         });
