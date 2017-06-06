@@ -2,7 +2,7 @@
 # |              DOCKERFILE                 |
 # |             Nicolas GIGOU               |
 # |                                         |
-# |            sender_bundle                |
+# |             sender_bundle               |
 #  -----------------------------------------
 
 # Prepared thanks to: https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
@@ -19,8 +19,8 @@ WORKDIR /usr/src/app
 
 # This image comes with Node.js and NPM already installed so the next thing we need to do is
 # To install your app dependencies using the npm binary
-COPY package.json /usr/src/app/
-RUN npm install
+ADD package.json /usr/src/app/package.json
+RUN cd /usr/src/app && npm install
 
 # To bundle your app's source code inside the Docker image
 COPY . /usr/src/app
@@ -30,4 +30,4 @@ EXPOSE 5671-5672
 
 # Limit the number of processus for the container to avoid system overflow
 # CMD [ "ulimit", "-u", "1" ]
-CMD [ "npm", "start" ]
+CMD [ "npm", "dev" ]

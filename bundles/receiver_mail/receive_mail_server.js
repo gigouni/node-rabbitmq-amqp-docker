@@ -12,6 +12,8 @@ const AMQP = require('amqplib/callback_api');
 // Check if the constants exists to avoid crash when connecting to the AMQP client
 if (!SYS.H.cioe(SYS.CONSTANTS)) { SYS.H.errHandler("while trying to read the constants. The config file might not be found", {}); }
 
+console.log(`===RECEIVE_MAIL_SERVER === will try to connect to ${SYS.CONSTANTS.CONNECT_TO}`);
+
 AMQP.connect(SYS.CONSTANTS.CONNECT_TO, (err, connection) => {
 
     // Clean exit

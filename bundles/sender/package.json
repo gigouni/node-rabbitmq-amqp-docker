@@ -4,8 +4,9 @@
   "description": "The bundle containing the sender of this POC",
   "main": "send_server.js",
   "scripts": {
-    "send": "node scripts/send_server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node send_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm i && npm start"
   },
   "keywords": [
     "AMQP",

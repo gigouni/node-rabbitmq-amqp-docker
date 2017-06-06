@@ -4,8 +4,9 @@
   "description": "The bundle containing the SMS receiver of this POC",
   "main": "receiver_sms_server.js",
   "scripts": {
-    "start": "node scripts/receive_sms_server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node receive_sms_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm i && npm start"
   },
   "keywords": [
     "AMQP",

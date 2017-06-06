@@ -6,11 +6,13 @@
  */
 
 // Module to set up several modules at once time
-const SYS = require('../utils/system');
+const SYS = require('./utils/system');
 const AMQP = require('amqplib/callback_api');
 
 // Check if the constants exists to avoid crash when connecting to the AMQP client
 if (!SYS.H.cioe(SYS.CONSTANTS)) { SYS.H.errHandler("while trying to read the constants. The config file might not be found", {}); }
+
+console.log(`=== RECEIVE_SMS_SERVER === will try to connect to ${SYS.CONSTANTS.CONNECT_TO}`);
 
 AMQP.connect(SYS.CONSTANTS.CONNECT_TO, (err, connection) => {
 

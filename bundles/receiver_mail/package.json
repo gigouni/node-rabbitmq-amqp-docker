@@ -4,8 +4,9 @@
   "description": "The bundle containing the mail receiver of this POC",
   "main": "receiver_mail_server.js",
   "scripts": {
-    "start": "node scripts/receive_mail_server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node receive_mail_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm i && npm start"
   },
   "keywords": [
     "AMQP",

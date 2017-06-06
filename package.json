@@ -21,8 +21,5 @@
   ],
   "author": "Nicolas GIGOU",
   "license": "ISC",
-  "dependencies": {
-    "amqplib": "^0.5.1",
-    "winston": "^2.3.1"
-  }
+  "dependencies": {}
 }

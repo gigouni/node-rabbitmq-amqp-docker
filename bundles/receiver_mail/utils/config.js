@@ -19,9 +19,10 @@
  * --------------------------------------------------------------------------------------------------------------
  */
 
-const _HOST                 = 'localhost';
+const _HOST                 = process.env.QUEUE_SERVER || 'localhost';
+const _PORT                 = process.env.QUEUE_PORT || 5672;
 const _AMQP_PROTOCOL        = 'amqp://';
-const _CONNECT_TO           = _AMQP_PROTOCOL + _HOST;
+const _CONNECT_TO           = _AMQP_PROTOCOL + _HOST + ":" + _PORT;
 const _SMS_QUEUE_NAME       = 'sms_queue';
 const _MAIL_QUEUE_NAME      = 'mail_queue';
 const _DIRECT_EXCHANGE_TYPE = 'direct';
