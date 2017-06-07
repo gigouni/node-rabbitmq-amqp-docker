@@ -1,6 +1,7 @@
 const _HOST             = 'localhost';
+const _PORT             = 5672;
 const _AMQP_PROTOCOL    = 'amqp://';
-const _CONNECT_TO       = _AMQP_PROTOCOL + _HOST;
+const _CONNECT_TO       = _AMQP_PROTOCOL + _HOST + ":" + _PORT;
 const _QUEUE_NAME       = 'hello';
 const _TASK_QUEUE_NAME  = 'task_queue';
 const _DURABLE_QUEUE_NAME = 'durable_queue';
@@ -11,6 +12,7 @@ const _RPC_QUEUE        = 'rpc_queue';
 
 module.exports = {
     HOST:               _HOST,
+    PORT:               _PORT,
     AMQP_PROTOCOL:      _AMQP_PROTOCOL,
     CONNECT_TO:         _CONNECT_TO,
     QUEUE_NAME:         _QUEUE_NAME,

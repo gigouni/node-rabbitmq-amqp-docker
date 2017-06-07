@@ -19,8 +19,8 @@ WORKDIR /usr/src/app
 
 # This image comes with Node.js and NPM already installed so the next thing we need to do is
 # To install your app dependencies using the npm binary
-ADD package.json /usr/src/app/package.json
-RUN cd /usr/src/app && npm install
+COPY package.json /usr/src/app/package.json
+RUN npm install
 
 # To bundle your app's source code inside the Docker image
 COPY . /usr/src/app

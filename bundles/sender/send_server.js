@@ -14,30 +14,41 @@ const AMQP = require('amqplib/callback_api');
 // Check if the constants exists to avoid crash when connecting to the AMQP client
 if (!SYS.H.cioe(SYS.CONSTANTS)) { SYS.H.errHandler("while trying to read the constants. The config file might not be found", {}); }
 
-console.log(`=== SEND_SERVER === will try to connect to ${SYS.CONSTANTS.CONNECT_TO}`);
+console.log("The sender_server script will be blocked two seconds to be sure the RabbitMQ server is running.");
 
-AMQP.connect(SYS.CONSTANTS.CONNECT_TO, (err, connection) => {
+function run_connect(){
+    return function(){
 
-    // Clean exit
-    if(err) { SYS.H.errHandler("while trying to connect to the AMQP client", err); }
+        console.log(`=== SEND_SERVER === will try to connect to ${SYS.CONSTANTS.CONNECT_TO}`);
 
-    connection.createChannel((err, channel) => {
+        AMQP.connect(SYS.CONSTANTS.CONNECT_TO, (err, connection) => {
 
-        // Clean exit
-        if(err) { SYS.H.errHandler("while trying to create the channel", err); }
+            console.log("Connected successfully!");
 
-        let target = 'sms';
-        let msg = 'Test d\'envoi de message pour les SMS';
+            // Clean exit
+            if(err) { SYS.H.errHandler("while trying to connect to the AMQP client", err); }
 
-        // Use direct queue to be able to interpret the 2nd parameter of the channel.publish(...) function
-        channel.assertExchange(SYS.CONSTANTS.EXCHANGE_NAME, SYS.CONSTANTS.EXCHANGE_TYPE, { durable: false });
-        channel.publish(SYS.CONSTANTS.EXCHANGE_NAME, target, new Buffer(msg));
-        console.log(` [x] Sent ${target}: '${msg}'`);
-    });
+            connection.createChannel((err, channel) => {
 
-    setTimeout(() => {
-        console.log("Time out. Close the connection.");
-        connection.close();
-        process.exit(0);
-    }, 500);
-});
+                // Clean exit
+                if(err) { SYS.H.errHandler("while trying to create the channel", err); }
+
+                let target = 'sms';
+                let msg = 'Test d\'envoi de message pour les SMS';
+
+                // Use direct queue to be able to interpret the 2nd parameter of the channel.publish(...) function
+                channel.assertExchange(SYS.CONSTANTS.EXCHANGE_NAME, SYS.CONSTANTS.EXCHANGE_TYPE, { durable: false });
+                channel.publish(SYS.CONSTANTS.EXCHANGE_NAME, target, new Buffer(msg));
+                console.log(` [x] Sent ${target}: '${msg}'`);
+            });
+
+            setTimeout(() => {
+                console.log("Time out. Close the connection.");
+                connection.close();
+                process.exit(0);
+            }, 500);
+        });
+    };
+}
+
+setTimeout(run_connect(), 2500);
