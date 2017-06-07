@@ -12,20 +12,7 @@ Open your terminal and clone the project stack from Github
 $ git clone https://github.com/gigouni/node-amqp
 ```
 
-Get a RabbitMQ instance running (and check status)
-
-```shell
-$ sudo rabbitmq-server start
-$ sudo rabbitmqctl status
-```
-
-Run the scripts to send and receive the message through the queue
-
-```shell
-$ node scripts/send_server.js
-$ node scripts/receive_sms_server.js
-$ node scripts/receive_mail_server.js
-```
+Go check the [bundles/README.md](https://github.com/gigouni/node-amqp/blob/docker/bundles/README.md) of the docker branch
 
 ## TODO list
 
