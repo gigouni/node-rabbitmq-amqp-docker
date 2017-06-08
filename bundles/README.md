@@ -40,6 +40,14 @@ $ # Activate the changes to groups
 $ newgrp docker
 ```
 
+## Improvements
+
+* Add tests to check if the connection w/ the AMQP client is working and 
+if it's necessary to re-run the _AMQP.connect(...)_ call
+* Rename some of the _utils_ names to improve the understanding of their utility
+* Homogenize the name of vars, files, folders and definitely choose between 
+camelCase and snake_case (the may-be-chosen case choice)
+
 To understand why it's the solution, [follow this link](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo).
 
 ## References

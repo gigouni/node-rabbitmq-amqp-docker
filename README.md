@@ -14,7 +14,21 @@ $ git clone https://github.com/gigouni/node-amqp
 
 Go check the [bundles/README.md](https://github.com/gigouni/node-amqp/blob/docker/bundles/README.md) of the docker branch
 
-## TODO list
+## Why RabbitMQ rather than ActiveMQ?
+
+Why not? No seriously, there are some reasons. The first one is the popularity of the RabbitMQ MOM. The most the users, 
+the more the potential help for future issues. The second one is the documentation much better w/ RabbitMQ than ActiveMQ. 
+
+"Well, and technically ?"
+
+The POC is here to prove that RabbitMQ could easily, quickly be used as a MOM to handle the sending and receiving 
+of messages. It's not so heavy content and benchmarks ([here](http://bit.ly/2qZ20L9) and [here](http://bit.ly/2r59pgh)) 
+are OK to tell that RabbitMQ is more efficient w/ light content. The AMQP (_"Advanced Message Queuing Protocol"_) has 
+been chosen due to the reliability of its queues and to be an example for most of the RabbitMQ/Node.js interested 
+people (MQTT is better for IoT, STOMP for text-based messages and WS should be replaced by STOMP since the Javascript 
+correctly handles JSON and text content).
+
+## Improvements
 
 * Implement an example of JWT authentication Node.js side plus session ID
 * Implement an authentication service RabbitMQ side
