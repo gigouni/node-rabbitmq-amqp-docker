@@ -36,11 +36,11 @@ correctly handles JSON and text content).
 
 ## Running the tests
 
-_Not implemented yet_
+_Not implemented yet. Let's see it later_
 
 ## Deployment
 
-Docker could be a part of the solution. _Could be_ .. Let's see it later
+__Docker__ is part of the solution. [Check this](https://github.com/gigouni/node-amqp/tree/dev/bundles).
 
 ## Built With
 
@@ -51,20 +51,6 @@ Docker could be a part of the solution. _Could be_ .. Let's see it later
 ## Contributing
 
 No contributions necessary.
-
-## Versioning
-
-* v2 _In progress_
-    * Move the previous scripts to a examples/ folder
-    * Create an empty Node.js server with two routes (one to check if the server is running, the other one to check the JWT protection)
-    * Add _express-jwt_ module to use JWT access control
-    * Improve the README.md
-
-* v1
-    * Create an util to mutualise constants values
-    * Follow the six steps of the RabbitMQ tutorial
-    * Move the created scripts to a script/ folder
-    * Write a README.md and add comments to a better understanding of the scripts
 
 ## Authors
 
@@ -83,6 +69,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Assume the role and the features of a MOM (_"Message-Oriented Middleware"_)
 * Bind a Node.js server with a MOM like RabbitMQ
 * Control access through JWT
+* Dockerize the application w/ Dockerfile or docker-compose.yml
 
 ## References
 
