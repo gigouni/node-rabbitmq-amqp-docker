@@ -1,0 +1,29 @@
+{
+  "name": "send_jwt",
+  "version": "0.0.1",
+  "description": "The bundle containing the sender of this POC",
+  "main": "send_server.js",
+  "scripts": {
+    "start": "node send_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm i && npm start"
+  },
+  "keywords": [
+    "AMQP",
+    "Node.js",
+    "javascript",
+    "queuing",
+    "RabbitMQ"
+  ],
+  "author": "Nicolas GIGOU",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.1",
+    "winston": "^2.3.1",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
+    "mongoose": "^4.4.5",
+    "morgan": "^1.7.0"
+  }
+}
