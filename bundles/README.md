@@ -31,7 +31,10 @@ The clustering is necessary when there is a big (estimated) increase in loads (i
 number of users by example) and it's necessary to increase the number of available machines 
 to meet the needs of the clients and services in a proportionate way.
 
-There are several way to form the cluster
+Considering you're checking your RabbitMQ server flow using the RabbitMQ Management plugin 
+(enabled in this stack, check the _bundles/docker-compose.yml_), you can note some unusual 
+high amounts of connections. To continue to provide an efficient service, you'll need to 
+clusterise your application. There are several way to form the cluster
 
 * Manually with rabbitmqctl (e.g. in development environments)
 * Declaratively by listing cluster nodes in [config file](https://www.rabbitmq.com/configure.html)
@@ -39,6 +42,37 @@ There are several way to form the cluster
 
 To read a complete guide about the RabbitMQ clustering, 
 [check this](https://www.rabbitmq.com/clustering.html) and [this](https://www.rabbitmq.com/ha.html)
+
+### Sum up
+
+The nodes are communicating through the "cluster network" thanks to the same secret phrase 
+(Erlang cookie). To set up the cluster, considering using the first way of clustering 
+the application, just run the rabbitmq-server commands from the shell (examples for the link)
+ 
+```shell
+rabbit1$ rabbitmq-server -detached
+rabbit2$ rabbitmq-server -detached
+rabbit3$ rabbitmq-server -detached
+```
+
+Join the nodes
+
+```shell
+rabbit2$ rabbitmqctl stop_app
+  Stopping node rabbit@rabbit2 ...done.
+  
+rabbit2$ rabbitmqctl join_cluster rabbit@rabbit1
+  Clustering node rabbit@rabbit2 with [rabbit@rabbit1] ...done.
+  
+rabbit2$ rabbitmqctl start_app
+  Starting node rabbit@rabbit2 ...done.
+```
+
+Then, check the cluster status
+
+```shell
+$ rabbitmqctl cluster_status
+```
 
 ## Additional notes
 
