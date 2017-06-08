@@ -25,6 +25,21 @@ Run the __docker-compose.yml__ to docker-ise the bundles into a single 'virtual 
 $ cd node-amqp/bundles/ && sudo docker-compose up
 ```
 
+## Clustering
+
+The clustering is necessary when there is a big (estimated) increase in loads (increase in the 
+number of users by example) and it's necessary to increase the number of available machines 
+to meet the needs of the clients and services in a proportionate way.
+
+There are several way to form the cluster
+
+* Manually with rabbitmqctl (e.g. in development environments)
+* Declaratively by listing cluster nodes in [config file](https://www.rabbitmq.com/configure.html)
+* Declaratively with [rabbitmq-autocluster](https://github.com/aweber/rabbitmq-autocluster/) (a plugin)
+
+To read a complete guide about the RabbitMQ clustering, 
+[check this](https://www.rabbitmq.com/clustering.html) and [this](https://www.rabbitmq.com/ha.html)
+
 ## Additional notes
 
 If you want to use docker without the 'sudo' keyword, use the following commands
