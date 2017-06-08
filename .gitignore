@@ -1,3 +1,7 @@
 node_modules
 .idea
 npm-debug.log
+Supprimerait bundles/enabled_plugins/
+Supprimerait bundles/receiver_mail/.npm-packages/
+Supprimerait bundles/receiver_sms/.npm-packages/
+Supprimerait bundles/sender/.npm-packages/

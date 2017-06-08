@@ -12,57 +12,24 @@ Open your terminal and clone the project stack from Github
 $ git clone https://github.com/gigouni/node-amqp
 ```
 
-Get a RabbitMQ instance running (and check status)
+Go check the [bundles/README.md](https://github.com/gigouni/node-amqp/blob/docker/bundles/README.md) of the docker branch
 
-```shell
-$ rabbitmq-server start
-$ rabbitmqctl status
-```
+## Why RabbitMQ rather than ActiveMQ?
 
-Run the scripts to send and receive the message through the queue (for params, check scripts themselves)
+Why not? No seriously, there are some reasons. The first one is the popularity of the RabbitMQ MOM. The most the users, 
+the more the potential help for future issues. The second one is the documentation much better w/ RabbitMQ than ActiveMQ. 
 
-```shell
-$ node examples/scripts/send.js
-$ node examples/scripts/receive.js
+"Well, and technically ?"
 
-or
+The POC is here to prove that RabbitMQ could easily, quickly be used as a MOM to handle the sending and receiving 
+of messages. It's not so heavy content and benchmarks ([here](http://bit.ly/2qZ20L9) and [here](http://bit.ly/2r59pgh)) 
+are OK to tell that RabbitMQ is more efficient w/ light content. The AMQP (_"Advanced Message Queuing Protocol"_) has 
+been chosen due to the reliability of its queues and to be an example for most of the RabbitMQ/Node.js interested 
+people (MQTT is better for IoT, STOMP for text-based messages and WS should be replaced by STOMP since the Javascript 
+correctly handles JSON and text content).
 
-$ node examples/scripts/new_task.js
-$ node examples/scripts/worker.js
+## Improvements
 
-or
-
-$ node examples/scripts/emit_log.js
-$ node examples/scripts/receive_log.js
-
-or
-
-$ node examples/scripts/emit_log_direct.js
-$ node examples/scripts/receive_log_direct.js
-
-or
-
-$ node examples/scripts/emit_log_topic.js
-$ node examples/scripts/receive_log_topic.js
-
-or
-
-$ node examples/scripts/rpc_server.js
-$ node examples/scripts/rpc_client.js
-```
-
-## To do list
-
-* ~~Handle the ECONNREFUSED issue~~
-* ~~Finish the part one of the tutorial ("Hello World!")~~
-* ~~Finish the part two of the tutorial (Work queues)~~
-* ~~Try to create senders (publishers)~~
-* ~~Try to create receivers (consumers)~~
-* ~~Try to create a queue~~
-* ~~Finish the part three of the tutorial (Publish/Subscribe)~~
-* ~~Finish the part four of the tutorial (Routing)~~
-* ~~Finish the part five of the tutorial (Topics)~~
-* ~~Finish the part six of the tutorial (RPC)~~
 * Implement an example of JWT authentication Node.js side plus session ID
 * Implement an authentication service RabbitMQ side
 * Improve the stack with a better architecture and documentation (maybe)
@@ -119,7 +86,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## References
 
-* [Docker run references](https://docs.docker.com/engine/reference/run/)
-* [Source of this Docker image](https://hub.docker.com/r/rabbitmq/)
 * [RabbitMQ tutorial](https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html)
 * [JWT.io](https://jwt.io/)
