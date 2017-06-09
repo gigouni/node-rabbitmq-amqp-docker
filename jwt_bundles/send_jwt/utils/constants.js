@@ -35,7 +35,7 @@ const _DIRECT_EXCHANGE_NAME     = 'direct_exchange';
 // ------------------------------------------------------------------------------
 //                                  API access
 // ------------------------------------------------------------------------------
-const _API_HOST             = 'http://localhost';
+const _API_HOST             = 'localhost';
 const _API_PORT             = 8080;
 const _API_SECRET           = 'toto';
 const _API_DATABASE         = 'mongodb://localhost:27017/database_name';

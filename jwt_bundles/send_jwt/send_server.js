@@ -17,7 +17,7 @@ const API_SEND      = require('./routes/send');
 const EXPRESS       = require('express');
 let app             = EXPRESS();
 
-MONGOOSE.connect(SYS.CONSTANTS.API_DATABASE); // connect to database
+// MONGOOSE.connect(SYS.CONSTANTS.API_DATABASE); // connect to database
 
 // use body parser so we can get info from POST and/or URL parameters
 app.use(BODY_PARSER.urlencoded({ extended: false }));
