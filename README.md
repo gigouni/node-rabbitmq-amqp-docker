@@ -15,7 +15,27 @@ Open your terminal and clone the project stack from Github
 $ git clone https://github.com/gigouni/node-amqp
 ```
 
-Go check the [bundles/README.md](https://github.com/gigouni/node-amqp/blob/master/bundles/README.md)
+Run the __docker-compose.yml__ to docker-ise the bundles into a single 'virtual network'
+
+```shell
+$ cd node-amqp/bundles/ && sudo docker-compose up
+```
+
+Go check the [bundles/README.md](https://github.com/gigouni/node-amqp/blob/master/bundles/README.md) for more information
+
+### API endpoints
+
+__SENDER__
+
+* POST /api/send/:data?token=TOKEN_KEY --> Send a message through the queue
+
+__RECEIVER MAIL__
+
+* GET /api/receive?token=TOKEN_KEY --> Receive a message form the queue, for 'MAIL' target
+
+__RECEIVER SMS__
+
+* GET /api/receive?token=TOKEN_KEY --> Receive a message form the queue, for 'SMS' target
 
 ## Why RabbitMQ rather than ActiveMQ?
 

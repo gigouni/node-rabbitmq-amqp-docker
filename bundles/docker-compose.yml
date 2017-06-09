@@ -14,6 +14,8 @@ services:
       - ./receiver_mail:/app
     ports:
       - 8200:8080
+    environment:
+      - MONGO_HOST=172.18.0.2
     command: ["run", "dev"]
 
   receiver_sms:
@@ -24,6 +26,8 @@ services:
       - ./receiver_sms:/app
     ports:
       - 8201:8080
+    environment:
+      - MONGO_HOST=172.18.0.2
     command: ["run", "dev"]
 
   sender:
@@ -36,4 +40,6 @@ services:
       - ./sender:/app
     ports:
       - 8202:8080
+    environment:
+      - MONGO_HOST=172.18.0.2
     command: ["run", "dev"]

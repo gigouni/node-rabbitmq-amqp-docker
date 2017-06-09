@@ -62,4 +62,4 @@ app.use('/api', API_ROOT);
 app.use('/api/send', API_SEND);
 
 app.listen(SYS.CONSTANTS.API_PORT);
-console.log(`Magic happens at ${SYS.CONSTANTS.API_HOST}:${SYS.CONSTANTS.API_PORT}`);
+console.log(`\nMagic happens at ${SYS.CONSTANTS.API_HOST}:${SYS.CONSTANTS.EXTERNAL_API_PORT}/api/send\n`);
