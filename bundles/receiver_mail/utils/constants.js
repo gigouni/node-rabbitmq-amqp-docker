@@ -22,7 +22,7 @@
 // ------------------------------------------------------------------------------
 //                  MOM ("Message-Oriented Middleware")
 // ------------------------------------------------------------------------------
-const _MOM_HOST = 'localhost';
+const _MOM_HOST = process.env.RABBIT_HOST || 'localhost';
 const _MOM_PORT = 5672;
 const _AMQP_PROTOCOL = 'amqp://';
 const _MOM_CONNECT_TO = _AMQP_PROTOCOL + _MOM_HOST + ":" + _MOM_PORT;
@@ -46,7 +46,7 @@ const _API_USER = {
     password: 'root',
     is_admin: true
 };
-const _API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NDY1MDViMDFmYTAzYmUwMTUxMDYwOWIiLCJuYW1lIjoiTmljayBDZXJtaW5hcmEiLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOnRydWUsIl9fdiI6MH0.ah-NFQ1967WVeN6lYNAahT7hZtshG6kw6AW3ncuJOYw";
+const _API_TOKEN = "THE_SIGNED_TOKEN";
 
 
 module.exports = {

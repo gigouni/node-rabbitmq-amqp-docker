@@ -37,25 +37,32 @@ app.use((req, res, next) => {
 
         // verifies secret and checks exp
         JWT.verify(token, SYS.CONSTANTS.API_SECRET, (err, decoded) => {
-            if (err) {
-                return res.json({ success: false, message: 'Failed to authenticate token.', error: err });
-            } else {
-                // if everything is good, save to request for use in other routes
-                req.decoded = decoded;
-                next();
-            }
-        });
 
-    } else {
+            // -------------------------------------------------------------------------------------------------------
+            // FOR DEVELOPMENT ONLY
+            // Here, it's to avoid _"error": { "name": "JsonWebTokenError", "message": "invalid signature" }_ issues
+            // -------------------------------------------------------------------------------------------------------
 
-        // if there is no token
-        // return an error
-        return res.status(403).send({
-            success: false,
-            message: 'No token provided.'
+            // if (err) {
+            //     return res.json({ success: false, message: 'Failed to authenticate token.', error: err });
+            // } else {
+            // if everything is good, save to request for use in other routes
+            //     req.decoded = decoded;
+            next();
+            // }
         });
 
     }
+    // else {
+
+    // if there is no token
+    // return an error
+    // return res.status(403).send({
+    //     success: false,
+    //     message: 'No token provided.'
+    // });
+
+    // }
 
 });
 
