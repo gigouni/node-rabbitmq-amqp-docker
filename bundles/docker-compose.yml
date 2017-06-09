@@ -1,51 +1,39 @@
 version: '3'
 services:
 
-  # The RabbitMQ service, to be able to communicate as a MOM with AMQP to the others containers (micro-services)
-  rabbitmq_server:
-    image: "rabbitmq:3.6.10-alpine"
-    environment:
-      - HOSTNAME=localhost
-      - RABBITMQ_NODE_IP_ADDRESS=172.18.0.2
-      - RABBITMQ_NODE_PORT=5672
+  mongo_server:
+    image: "mongo:3.5"
+    expose:
+      - "27017"
 
-  # The RabbitMQ manager, to handle the MOM through the UI
-  rabbitmq_management:
-    image: "rabbitmq:3-management"
+  receiver_mail:
     depends_on:
-      - rabbitmq_server
-
-  # The script charged to receive and handle messages targeted to the 'MAIL' queue
-  receiver-mail:
-    depends_on:
-      - rabbitmq_server
+      - mongo_server
     image: zedesk/zdknode:8.0.0
     volumes:
       - ./receiver_mail:/app
-    environment:
-      - QUEUE_SERVER=172.18.0.2
+    ports:
+      - 8200:8080
     command: ["run", "dev"]
 
-  # The script charged to receive and handle messages targeted to the 'SMS' queue
-  receiver-sms:
+  receiver_sms:
     depends_on:
-      - rabbitmq_server
+      - mongo_server
     image: zedesk/zdknode:8.0.0
     volumes:
       - ./receiver_sms:/app
-    environment:
-      - QUEUE_SERVER=172.18.0.2
+    ports:
+      - 8201:8080
     command: ["run", "dev"]
 
-  # The script charged to send the message through the MOM
   sender:
     depends_on:
-      - rabbitmq_server
-      - receiver-mail
-      - receiver-sms
+      - mongo_server
+      - receiver_mail
+      - receiver_sms
     image: zedesk/zdknode:8.0.0
     volumes:
       - ./sender:/app
-    environment:
-      - QUEUE_SERVER=172.18.0.2
+    ports:
+      - 8202:8080
     command: ["run", "dev"]

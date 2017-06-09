@@ -5,57 +5,60 @@
  * @author Nicolas GIGOU <nicolas.gigou [at] gmail.com>
  */
 
-// Module to set up several modules at once time
 const SYS = require('./utils/system');
-const AMQP = require('amqplib/callback_api');
+const BODY_PARSER = require('body-parser');
+const LOGGER = require('morgan');
+const MONGOOSE = require('mongoose');
+const JWT = require('jsonwebtoken');
+const API_ROOT = require('./routes/api');
+const API_RECEIVE = require('./routes/receive');
+const EXPRESS = require('express');
+let app = EXPRESS();
 
-// Check if the constants exists to avoid crash when connecting to the AMQP client
-if (!SYS.H.cioe(SYS.CONSTANTS)) { SYS.H.errHandler("while trying to read the constants. The config file might not be found", {}); }
+MONGOOSE.connect(SYS.CONSTANTS.API_DATABASE); // connect to database
 
-console.log("The receive_mail_server script will be blocked two seconds to be sure the RabbitMQ server is running.");
+// use body parser so we can get info from POST and/or URL parameters
+app.use(BODY_PARSER.urlencoded({ extended: false }));
+app.use(BODY_PARSER.json());
 
-function run_connect(){
-    return function(){
-        console.log(`=== RECEIVE_MAIL_SERVER === will try to connect to ${SYS.CONSTANTS.CONNECT_TO}`);
-        AMQP.connect(SYS.CONSTANTS.CONNECT_TO, (err, connection) => {
+// use LOGGER to log requests to the console
+app.use(LOGGER('dev'));
 
-            console.log("Connected successfully!");
+// API protected by JSON WEB TOKEN
+app.use((req, res, next) => {
 
-            // Clean exit
-            if(err) { SYS.H.errHandler("while trying to connect to the AMQP client", err); }
+    // check header or url parameters or post parameters for token
+    let token = req.body.token || req.param('token') || req.headers['x-access-token'];
 
-            // AMQP 0-9-1 connections are multiplexed with channels that can be thought
-            // of as "lightweight connections that share a single TCP connection"
-            connection.createChannel((err, channel) => {
+    // decode token
+    if (token) {
 
-                // Clean exit
-                if(err) { SYS.H.errHandler("while trying to create the channel", err); }
-
-                // Check the existence of the direct exchange
-                // If the rabbitMQ is killed, the exchange is lost (durable: false)
-                channel.assertExchange(SYS.CONSTANTS.EXCHANGE_NAME, SYS.CONSTANTS.EXCHANGE_TYPE, { durable: false });
-
-                // Exclusive queues may only be accessed by the current connection
-                // They are deleted when that connection closes
-                channel.assertQueue(SYS.CONSTANTS.MAIL_QUEUE_NAME, { exclusive: true }, (err, q) => {
-
-                    // Clean exit
-                    if(err) { SYS.H.errHandler(`while trying to assert the ${SYS.CONSTANTS.MAIL_QUEUE_NAME} queue`, err); }
-
-                    console.log(` [*] Waiting for MAIL on ${SYS.CONSTANTS.MAIL_QUEUE_NAME} queue. To exit press CTRL+C`);
-
-                    // Bind the queue with the exchange by being interested by messages with the 'mail' pattern
-                    channel.bindQueue(q.queue, SYS.CONSTANTS.EXCHANGE_NAME, 'mail');
-
-                    // Executed action when receiving messages from the queue
-                    channel.consume(q.queue, (msg) => {
-                        console.log(` [x] ${msg.fields.routingKey}:${msg.content.toString()}`);
-                        console.log("The message with be send to the tiers MAIL broker right now");
-                    }, { noAck: false });
-                });
-            });
+        // verifies secret and checks exp
+        JWT.verify(token, SYS.CONSTANTS.API_SECRET, (err, decoded) => {
+            if (err) {
+                return res.json({ success: false, message: 'Failed to authenticate token.', error: err });
+            } else {
+                // if everything is good, save to request for use in other routes
+                req.decoded = decoded;
+                next();
+            }
         });
-    };
-}
 
-setTimeout(run_connect(), 2500);
+    } else {
+
+        // if there is no token
+        // return an error
+        return res.status(403).send({
+            success: false,
+            message: 'No token provided.'
+        });
+
+    }
+
+});
+
+app.use('/api', API_ROOT);
+app.use('/api/receive', API_RECEIVE);
+
+app.listen(SYS.CONSTANTS.API_PORT);
+console.log(`Magic happens at ${SYS.CONSTANTS.API_HOST}:${SYS.CONSTANTS.API_PORT}`);

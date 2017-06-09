@@ -4,51 +4,62 @@
  *
  * @author Nicolas GIGOU <nicolas.gigou [at] gmail.com>
  * @date 30/05/2017
- * @see https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html
  */
 
-// Module to set up several modules at once time
 const SYS = require('./utils/system');
-const AMQP = require('amqplib/callback_api');
+const BODY_PARSER = require('body-parser');
+const LOGGER = require('morgan');
+const MONGOOSE = require('mongoose');
+const JWT = require('jsonwebtoken');
+const API_ROOT = require('./routes/api');
+const API_SEND = require('./routes/send');
+const EXPRESS = require('express');
+let app = EXPRESS();
 
-// Check if the constants exists to avoid crash when connecting to the AMQP client
-if (!SYS.H.cioe(SYS.CONSTANTS)) { SYS.H.errHandler("while trying to read the constants. The config file might not be found", {}); }
+MONGOOSE.connect(SYS.CONSTANTS.API_DATABASE); // connect to database
 
-console.log("The sender_server script will be blocked two seconds to be sure the RabbitMQ server is running.");
+// use body parser so we can get info from POST and/or URL parameters
+app.use(BODY_PARSER.urlencoded({ extended: false }));
+app.use(BODY_PARSER.json());
 
-function run_connect(){
-    return function(){
+// use LOGGER to log requests to the console
+app.use(LOGGER('dev'));
 
-        console.log(`=== SEND_SERVER === will try to connect to ${SYS.CONSTANTS.CONNECT_TO}`);
+// API protected by JSON WEB TOKEN
+app.use((req, res, next) => {
 
-        AMQP.connect(SYS.CONSTANTS.CONNECT_TO, (err, connection) => {
+    // check header or url parameters or post parameters for token
+    let token = req.body.token || req.param('token') || req.headers['x-access-token'];
 
-            console.log("Connected successfully!");
+    // decode token
+    if (token) {
 
-            // Clean exit
-            if(err) { SYS.H.errHandler("while trying to connect to the AMQP client", err); }
-
-            connection.createChannel((err, channel) => {
-
-                // Clean exit
-                if(err) { SYS.H.errHandler("while trying to create the channel", err); }
-
-                let target = 'sms';
-                let msg = 'Test d\'envoi de message pour les SMS';
-
-                // Use direct queue to be able to interpret the 2nd parameter of the channel.publish(...) function
-                channel.assertExchange(SYS.CONSTANTS.EXCHANGE_NAME, SYS.CONSTANTS.EXCHANGE_TYPE, { durable: false });
-                channel.publish(SYS.CONSTANTS.EXCHANGE_NAME, target, new Buffer(msg));
-                console.log(` [x] Sent ${target}: '${msg}'`);
-            });
-
-            setTimeout(() => {
-                console.log("Time out. Close the connection.");
-                connection.close();
-                process.exit(0);
-            }, 500);
+        // verifies secret and checks exp
+        JWT.verify(token, SYS.CONSTANTS.API_SECRET, (err, decoded) => {
+            if (err) {
+                return res.json({ success: false, message: 'Failed to authenticate token.', error: err });
+            } else {
+                // if everything is good, save to request for use in other routes
+                req.decoded = decoded;
+                next();
+            }
         });
-    };
-}
 
-setTimeout(run_connect(), 2500);
+    } else {
+
+        // if there is no token
+        // return an error
+        return res.status(403).send({
+            success: false,
+            message: 'No token provided.'
+        });
+
+    }
+
+});
+
+app.use('/api', API_ROOT);
+app.use('/api/send', API_SEND);
+
+app.listen(SYS.CONSTANTS.API_PORT);
+console.log(`Magic happens at ${SYS.CONSTANTS.API_HOST}:${SYS.CONSTANTS.API_PORT}`);

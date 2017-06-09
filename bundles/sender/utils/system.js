@@ -31,15 +31,10 @@
 const HELPER = require('../utils/helper');
 const _H = new HELPER();
 
-// The system logger
-const LOGGER = require('../utils/logger');
-const _L = new LOGGER();
-
 // The config/constants to mutualise all the important and editable data into a single file
-const _CONSTANTS = require('./config');
+const _CONSTANTS = require('./constants');
 
 module.exports = {
     H:          _H,
-    L:          _L,
     CONSTANTS:  _CONSTANTS
 };

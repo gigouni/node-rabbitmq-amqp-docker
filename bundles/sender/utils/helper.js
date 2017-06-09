@@ -88,7 +88,7 @@ Helper.prototype.l = function(severity, msg) {
         console.log("An unknown log level has been detected by the Helper. INFO used instead.");
         severity = "INFO";
     }
-    console.log( "\n=== " + severity + " ===\n", msg + "\n" );
+    console.log( `\n=== ${severity} === : ${msg}\n` );
 };
 
 module.exports = Helper;

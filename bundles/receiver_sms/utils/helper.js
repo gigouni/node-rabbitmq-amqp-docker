@@ -75,4 +75,20 @@ Helper.prototype.errHandler = (msg, err) => {
     process.exit(0);
 };
 
+/**
+ * @description Reduces the function call to console.log(...) for logs.
+ * @param severity {string} The level of severity of the message between {INFO, WARN, ERROR}.
+ * @param msg {string} The message to add to the INFO log.
+ * @since  0.0.1.
+ * @author Nicolas GIGOU.
+ */
+Helper.prototype.l = function(severity, msg) {
+    let allowed_severity = ["INFO", "WARN", "ERROR"];
+    if(allowed_severity.indexOf(severity) === -1) {
+        console.log("An unknown log level has been detected by the Helper. INFO used instead.");
+        severity = "INFO";
+    }
+    console.log( `\n=== ${severity} === : ${msg}\n` );
+};
+
 module.exports = Helper;
