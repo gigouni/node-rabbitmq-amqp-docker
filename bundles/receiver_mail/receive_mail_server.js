@@ -28,7 +28,8 @@ app.use(LOGGER('dev'));
 app.use((req, res, next) => {
 
     // check header or url parameters or post parameters for token
-    let token = req.body.token || req.param('token') || req.headers['x-access-token'];
+    // let token = req.body.token || req.param('token') || req.headers['x-access-token'];
+    let token = SYS.CONSTANTS.API_TOKEN;
 
     // decode token
     if (token) {

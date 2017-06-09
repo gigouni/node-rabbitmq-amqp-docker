@@ -38,7 +38,7 @@ const _DIRECT_EXCHANGE_NAME = 'direct_exchange';
 const _API_HOST = 'localhost';
 const _API_PORT = 8080;
 const _EXTERNAL_API_PORT = 8202;
-const _API_SECRET = 'toto';
+const _API_SECRET = 'ilovescotchyscotch';
 const _DATABASE_HOST = process.env.MONGO_HOST || 'localhost';
 const _API_DATABASE = 'mongodb://' + _DATABASE_HOST + ':27017/database_name';
 const _API_USER = {
@@ -46,6 +46,7 @@ const _API_USER = {
     password: 'root',
     is_admin: true
 };
+const _API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NDY1MDViMDFmYTAzYmUwMTUxMDYwOWIiLCJuYW1lIjoiTmljayBDZXJtaW5hcmEiLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOnRydWUsIl9fdiI6MH0.ah-NFQ1967WVeN6lYNAahT7hZtshG6kw6AW3ncuJOYw";
 
 
 module.exports = {
@@ -61,5 +62,6 @@ module.exports = {
     EXTERNAL_API_PORT: _EXTERNAL_API_PORT,
     API_SECRET: _API_SECRET,
     API_DATABASE: _API_DATABASE,
-    API_USER: _API_USER
+    API_USER: _API_USER,
+    API_TOKEN: _API_TOKEN
 };
