@@ -14,7 +14,7 @@ const AMQP = require('amqplib/callback_api');
 
 ROUTER.get('/', function(req, res, err) {
 
-    if (err) { res.json(err); }
+    // if (err) { res.json(err); }
 
     console.log(`=== RECEIVE_MAIL_SERVER === will try to connect to ${SYS.CONSTANTS.CONNECT_TO}`);
 
@@ -23,14 +23,14 @@ ROUTER.get('/', function(req, res, err) {
         console.log("Connected successfully!");
 
         // Clean exit
-        if (err) { res.json(err); }
+        // if (err) { res.json(err); }
 
         // AMQP 0-9-1 connections are multiplexed with channels that can be thought
         // of as "lightweight connections that share a single TCP connection"
         connection.createChannel((err, channel) => {
 
             // Clean exit
-            if (err) { res.json(err); }
+            // if (err) { res.json(err); }
 
             // Check the existence of the direct exchange
             // If the rabbitMQ is killed, the exchange is lost (durable: false)
@@ -41,7 +41,7 @@ ROUTER.get('/', function(req, res, err) {
             channel.assertQueue(SYS.CONSTANTS.MAIL_QUEUE_NAME, { exclusive: true }, (err, q) => {
 
                 // Clean exit
-                if (err) { res.json(err); }
+                // if (err) { res.json(err); }
 
                 console.log(` [*] Waiting for MAIL on ${SYS.CONSTANTS.MAIL_QUEUE_NAME} queue. To exit press CTRL+C`);
 
