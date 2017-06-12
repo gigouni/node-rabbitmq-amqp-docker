@@ -52,7 +52,7 @@ ROUTER.get('/', function(req, res, err) {
                 channel.consume(q.queue, (msg) => {
                     console.log(` [x] ${msg.fields.routingKey}:${msg.content.toString()}`);
                     console.log("The message with be send to the tiers SMS broker right now");
-                    res.json(`Success receiving message: ${msg_req.content.toString()}`);
+                    res.json(`Success receiving message: ${msg.content.toString()}`);
                 }, { noAck: false });
             });
         });
